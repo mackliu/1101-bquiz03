@@ -110,6 +110,13 @@ class DB{
 
         return $this->pdo->query($sql)->fetchColumn();
     }
+    //欄位最大值
+    
+    public function math($math,$col){
+        $sql="select $math(`$col`) from $this->table";
+
+        return $this->pdo->query($sql)->fetchColumn();
+    }
 
     public function save($array){
         if(isset($array['id'])){
@@ -134,6 +141,9 @@ class DB{
     }
 
 }
+
+
+$Trailer=new DB('trailer');
 
 
 function to($url){
