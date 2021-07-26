@@ -112,7 +112,7 @@
 $(".sw").on("click",function(){
     let id=$(this).attr('id').split("-")
     console.log(id);
-    $.post('api/sw.php',{id},(res)=>{
+    $.post('api/sw.php',{id,'table':'trailer'},(res)=>{
         //console.log(res)
         location.reload()
     })
