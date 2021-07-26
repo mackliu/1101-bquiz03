@@ -1,6 +1,6 @@
 
 <style>
-    .trailer-header,.trailer-add{
+    .trailer-header,.trailer-add,.trailer-body .row{
         display:flex;
         justify-content:space-between;
     }
@@ -15,9 +15,22 @@
         height:225px;
         overflow:auto;
     }
+    .trailer-body .row{
+        margin:3px 0;
+        text-align:center;
+        background:white;
+        padding:3px 0;
+        align-items:center;
+    }
+    .row > div{
+        width:24.75%;
+    }
     .trailer-add > div{
         width:48%;
         margin-top:10px;
+    }
+    .trailer-btn{
+        margin-top:5px;
     }
 </style>
 <div class="tab">
@@ -33,15 +46,31 @@
     <?php
         $trailers=$Trailer->all(['sh'=>1],' order by rank');
         foreach($trailers as $trailer){
-    ?>
-        <div><?=$trailer['img'];?></div>
-        <div><?=$trailer['name'];?></div>
-        <div><?=$trailer['rank'];?></div>
-        <div>操作</div>
-    </div>
-    <?php
+    ?> 
+        <div class="row">
+        <div><img src='img/<?=$trailer['img'];?>' style="width:75px;height:90px;"></div>
+        <div><input type="text" name="name[]" value="<?=$trailer['name'];?>"></div>
+        <div>
+            <input type="button" value="往下">
+            <input type="button" value="往上">    
+            <?=$trailer['rank'];?>
+    
+        </div>
+        <div>
+            <input type="checkbox" name="sh[]" value="<?=$trailer['id'];?>" <?=($trailer['sh']==1)?'checked':'';?>>顯示
+            <input type="checkbox" name="del[]" value="<?=$trailer['id'];?>">刪除
+            <select name="ani[]">
+                <option value="1" <?=($trailer['ani']==1)?'selected':'';?>>淡入淡出</option>
+                <option value="2" <?=($trailer['ani']==2)?'selected':'';?>>縮放</option>
+                <option value="3" <?=($trailer['ani']==3)?'selected':'';?>>滑入滑出</option>
+
+            </select>
+        </div>
+        </div>
+        <?php
     }
     ?>
+    </div>
     <div class="ct trailer-btn">
         <input type="submit" value="編輯確定">
         <input type="reset" value="重置">
