@@ -69,22 +69,15 @@
     </div>
 </div>
 <script>
-
-
 getList()
-
 function sw(dom){
     let id=$(dom).attr('id').split("-")
     $.post('api/sw.php',{id},()=>{
-        //console.log(res)
         getList()
-
     })
 }
 
 function getList(){
-    $.get("backend/trailer_body.php",(list)=>{
-    $(".trailer-body").html(list);
-})
+        $(".trailer-body").load("backend/trailer_body.php")
 }
 </script>
