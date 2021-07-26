@@ -42,9 +42,10 @@
         <div class='items'>預告片排序</div>
         <div class='items'>操作</div>
     </div>
+    <form action="api/edit_trailer.php" method="post">
     <div class="trailer-body">
     <?php
-        $trailers=$Trailer->all(['sh'=>1],' order by rank');
+        $trailers=$Trailer->all(' order by rank');
         foreach($trailers as $trailer){
     ?> 
         <div class="row">
@@ -65,6 +66,7 @@
                 <option value="3" <?=($trailer['ani']==3)?'selected':'';?>>滑入滑出</option>
 
             </select>
+            <input type="hidden" name="id[]" value="<?=$trailer['id'];?>">
         </div>
         </div>
         <?php
@@ -74,8 +76,9 @@
     <div class="ct trailer-btn">
         <input type="submit" value="編輯確定">
         <input type="reset" value="重置">
-
+        
     </div>
+</form>
 </div>
 <hr>
     <div style="height:160px;width:95%;background:#ccc;padding:5px">
