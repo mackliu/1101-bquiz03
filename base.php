@@ -136,7 +136,7 @@ class DB{
                     ('".implode("','",$array)."')";
         }
 
-        //echo $sql;
+        echo $sql;
         return $this->pdo->exec($sql);
     }
 
@@ -144,7 +144,7 @@ class DB{
 
 
 $Trailer=new DB('trailer');
-
+$Movie=new DB('movie');
 
 function to($url){
     header("location:".$url);
