@@ -43,7 +43,7 @@
                         <button id="<?=$up;?>" class='sw'>往上</button>
                         <button id="<?=$down;?>" class='sw'>往下</button>
                         <button>編輯電影</button>
-                        <button>刪除電影</button>
+                        <button class='del-btn' data-id="<?=$movie['id'];?>">刪除電影</button>
 
                     </div>
                     <div>
@@ -85,4 +85,10 @@ $.post("api/show.php",{id},()=>{
 
 })
 
+$(".del-btn").on("click",function(){
+    let id=$(this).data('id')
+    $.post("api/del.php",{'table':'movie',id},()=>{
+        location.reload();
+    })
+})
 </script>
