@@ -145,6 +145,8 @@ class DB{
 
 $Trailer=new DB('trailer');
 $Movie=new DB('movie');
+$Ord=new DB('ord');
+
 
 function to($url){
     header("location:".$url);
