@@ -6,7 +6,7 @@ date_default_timezone_set("Asia/Taipei");
 class DB{
     private $dsn="mysql:host=localhost;charset=utf8;dbname=db66";
     private $root='root';
-    private $password='12345';
+    private $password='';
     private $table;
     private $pdo;
 

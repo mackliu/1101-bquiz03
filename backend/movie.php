@@ -2,7 +2,7 @@
 
 </style>
 <div class="tab">
-    <div style="height:450px;width:95%;background:#ccc;padding:5px">
+    <div style="height:450px;width:95%;background:#ccc;padding:5px;overflow:auto">
         <button onclick="location.href='?do=new_movie'">新增電影</button>
         <hr>
         <div class="movie-body">
@@ -39,7 +39,7 @@
 
                     </div>
                     <div style="text-align:right">
-                        <button>顯示</button>
+                        <button class="show-movie" data-id="<?=$movie['id'];?>"><?=($movie['sh']==1)?'顯示':'隱藏';?></button>
                         <button id="<?=$up;?>" class='sw'>往上</button>
                         <button id="<?=$down;?>" class='sw'>往下</button>
                         <button>編輯電影</button>
@@ -68,4 +68,21 @@ $(".sw").on("click", function() {
         location.reload()
     })
 })
+
+$(".show-movie").on('click',function(){
+    let id=$(this).data('id')
+/*     switch($(this).text()){
+        case "顯示":
+            $(this).text("隱藏")
+        break;
+        case "隱藏":
+            $(this).text("顯示")
+        break;
+    } */
+$.post("api/show.php",{id},()=>{
+    location.reload();
+})
+
+})
+
 </script>
