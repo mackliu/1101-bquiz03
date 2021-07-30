@@ -41,7 +41,7 @@ class DB{
 
         }
 
-        $sql;
+       // echo $sql;
         return $this->pdo->query($sql)->fetchAll();
 
     }
@@ -151,6 +151,13 @@ $Ord=new DB('ord');
 function to($url){
     header("location:".$url);
 }
+
+$ll=[
+    1=>"普通級",
+    2=>'保護級',
+    3=>'輔導級',
+    4=>'限制級'
+];
 
 
 ?>
