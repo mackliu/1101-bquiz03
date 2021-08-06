@@ -1,14 +1,41 @@
+<style>
+.posters{
+    width:210px;
+    height:280px;
+    margin-bottom:10px;
+    position: relative;
+
+}
+
+.btns{
+    width:400px;
+    height:120px;
+    position: relative;
+}
+
+</style>
+
 <div class="half" style="vertical-align:top;">
-                <h1>預告片介紹</h1>
-                <div class="rb tab" style="width:95%;">
-                    <div id="abgne-block-20111227">
-                        <ul class="lists">
-                        </ul>
-                        <ul class="controls">
-                        </ul>
-                    </div>
-                </div>
-            </div>
+<h1>預告片介紹</h1>
+<div class="rb tab" style="width:95%;">
+    <div id="">
+        <div class="posters">
+            <?php
+                $pos=$Trailer->all(['sh'=>1]);
+                foreach($pos as $index => $po){
+                    echo "<div>";
+                    echo "<img src='img/{$po['img']}'><br>";
+                    echo $po['name'];
+                    echo "</div>";
+                }
+
+            ?>
+        </div>
+        <div class="btns">
+        </div>
+    </div>
+</div>
+</div>
 
 
 
