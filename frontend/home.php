@@ -89,7 +89,60 @@
 </div>
 </div>
 <script>
-    $(".po").eq(0).show()
+    let po=0;
+    let all=$(".po").length
+    $(".po").eq(po).show()
+
+let slider=setInterval(() => {
+
+    ani()
+}, 3000);
+
+function ani(){
+    let now=$(".po:visible")
+    let next;
+    if($(now).index()+1<all){
+        next=$(".po").eq($(now).index()+1)
+    }else{
+        next=$(".po").eq(0)
+    }
+    
+    switch($(next).data('ani')){
+        case 1:
+            //淡入淡出
+/*             $(now).fadeOut(2000)
+            $(next).fadeIn(2000) */
+
+            $(now).fadeOut(1000,()=>{
+                $(next).fadeIn(1000)
+            })
+
+
+        break;
+        case 2:
+            //縮放
+            /* $(now).fadeOut(1500)
+            $(next).fadeIn(1500) */
+            $(now).fadeOut(1000,()=>{
+                $(next).fadeIn(1000)
+            })
+
+        break;
+        case 3:
+            //滑入滑出
+            /* $(now).fadeOut(1500)
+            $(next).fadeIn(1500) */
+            $(now).fadeOut(1000,()=>{
+                $(next).fadeIn(1000)
+            })
+
+        break;
+    }
+
+    console.log($(now).text(),$(next).text())
+}
+
+
 </script>
 
 
