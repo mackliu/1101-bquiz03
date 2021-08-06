@@ -5,6 +5,7 @@
     margin:0 auto 10px auto;
     /* margin-bottom:10px; */
     position: relative;
+    overflow:hidden;
 }
 
 .po{
@@ -119,16 +120,25 @@ function ani(dom){
         break;
         case 2:
             //縮放
-            $(now).hide(1000,()=>{
-                $(next).show(1000)
+            $(now).animate({left:105,top:140,width:0,height:0},1000,function(){
+                $(now).hide()
+                $(now).css({left:0,top:0,width:210,height:280})
+                $(next).show()
+                $(next).css({left:105,top:140,width:0,height:0})
+                $(next).animate({left:0,top:0,width:210,height:280},1000)
             })
         break;
         case 3:
             //滑入滑出
-            $(now).slideUp(1000,()=>{
-                $(next).slideDown(1000)
+            $(now).animate({left:-210,top:0,width:210,height:280},1500,function(){
+                $(now).hide()
+                $(now).css({left:0,top:0,width:210,height:280})
             })
+            $(next).show()
+            $(next).css({left:210,top:0,width:210,height:280})
+            $(next).animate({left:0,top:0,width:210,height:280},1500)
         break;
+        
     }
 
     
