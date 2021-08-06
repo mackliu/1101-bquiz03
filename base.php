@@ -6,7 +6,7 @@ date_default_timezone_set("Asia/Taipei");
 class DB{
     private $dsn="mysql:host=localhost;charset=utf8;dbname=db66";
     private $root='root';
-    private $password='';
+    private $password='12345';
     private $table;
     private $pdo;
 
@@ -154,8 +154,8 @@ function to($url){
 
 $ll=[
     1=>"普通級",
-    2=>'保護級',
-    3=>'輔導級',
+    2=>'輔導級',
+    3=>'保護級',
     4=>'限制級'
 ];
 
