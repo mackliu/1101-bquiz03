@@ -94,18 +94,20 @@
     let all=$(".po").length
     $(".po").eq(po).show()
 
-let slider=setInterval(() => {
+let slider=setInterval('ani()', 3000);
 
-    ani()
-}, 3000);
-
-function ani(){
+function ani(dom){
     let now=$(".po:visible")
     let next;
-    if($(now).index()+1<all){
-        next=$(".po").eq($(now).index()+1)
+
+    if(typeof dom !='undefined'){
+        next=dom
     }else{
-        next=$(".po").eq(0)
+        if($(now).index()+1<all){
+            next=$(".po").eq($(now).index()+1)
+        }else{
+            next=$(".po").eq(0)
+        }
     }
     
     switch($(next).data('ani')){
@@ -148,6 +150,25 @@ $(".arrow").on("click",function(){
     $(".thumb").animate({right:p*80})
    })
 
+
+$(".thumb").on('click',function(){
+    let index=$(this).index()
+    ani($('.po').eq(index))
+})
+
+//暫停動畫
+
+$(".thumbs").hover(
+    function(){
+        clearInterval(slider)
+    }
+    ,
+    function(){
+        slider=setInterval(() => {
+    ani()
+}, 3000);
+    }
+)
 
 </script>
 
