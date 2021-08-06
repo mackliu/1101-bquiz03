@@ -110,36 +110,25 @@ function ani(){
     switch($(next).data('ani')){
         case 1:
             //淡入淡出
-/*             $(now).fadeOut(2000)
-            $(next).fadeIn(2000) */
-
             $(now).fadeOut(1000,()=>{
                 $(next).fadeIn(1000)
             })
-
-
         break;
         case 2:
             //縮放
-            /* $(now).fadeOut(1500)
-            $(next).fadeIn(1500) */
-            $(now).fadeOut(1000,()=>{
-                $(next).fadeIn(1000)
+            $(now).hide(1000,()=>{
+                $(next).show(1000)
             })
-
         break;
         case 3:
             //滑入滑出
-            /* $(now).fadeOut(1500)
-            $(next).fadeIn(1500) */
-            $(now).fadeOut(1000,()=>{
-                $(next).fadeIn(1000)
+            $(now).slideUp(1000,()=>{
+                $(next).slideDown(1000)
             })
-
         break;
     }
 
-    console.log($(now).text(),$(next).text())
+    
 }
 
 
