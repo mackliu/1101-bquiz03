@@ -2,17 +2,57 @@
 .posters{
     width:210px;
     height:280px;
-    margin-bottom:10px;
+    margin:0 auto 10px auto;
+    /* margin-bottom:10px; */
     position: relative;
-
 }
 
+.po{
+    position:absolute;
+    text-align:center;
+    display:none;
+}
+.po img{
+ width:100%;
+ height:260px;
+ 
+}
 .btns{
-    width:400px;
+    width:410px;
     height:120px;
     position: relative;
+    display:flex;
+    align-items:center;
 }
 
+.arrow{
+   border:20px solid transparent;
+   width:0;
+   cursor:pointer;
+}
+.left{
+    border-right:20px solid black;
+}
+.right{
+    border-left:20px solid black;
+}
+.thumbs{
+    width:320px;
+    overflow:hidden;
+    position:relative;
+    display:flex;
+}
+.thumb{
+    width:80px;
+    padding:5px;
+    flex-shrink:0;
+    box-sizing:border-box;
+    font-size:12px;
+}
+.thumb img{
+    width:100%;
+    height:100px;
+}
 </style>
 
 <div class="half" style="vertical-align:top;">
@@ -21,9 +61,9 @@
     <div id="">
         <div class="posters">
             <?php
-                $pos=$Trailer->all(['sh'=>1]);
+                $pos=$Trailer->all(['sh'=>1]," order by rank");
                 foreach($pos as $index => $po){
-                    echo "<div>";
+                    echo "<div class='po' data-ani='{$po['ani']}'>";
                     echo "<img src='img/{$po['img']}'><br>";
                     echo $po['name'];
                     echo "</div>";
@@ -32,11 +72,25 @@
             ?>
         </div>
         <div class="btns">
+            <div class='arrow left'></div>
+            <div class='thumbs'>
+                <?php
+            foreach($pos as $index => $po){
+                    echo "<div class='thumb' data-ani='{$po['ani']}'>";
+                    echo "<img src='img/{$po['img']}'><br>";
+                    echo $po['name'];
+                    echo "</div>";
+                }
+                ?>
+            </div>
+            <div class='arrow right'></div>
         </div>
     </div>
 </div>
 </div>
-
+<script>
+    $(".po").eq(0).show()
+</script>
 
 
     <style>
