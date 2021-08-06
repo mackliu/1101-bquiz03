@@ -48,6 +48,7 @@
     flex-shrink:0;
     box-sizing:border-box;
     font-size:12px;
+    position:relative;
 }
 .thumb img{
     width:100%;
@@ -130,6 +131,22 @@ function ani(){
 
     
 }
+
+//按鈕控制
+let p=0;
+//all-4
+$(".arrow").on("click",function(){
+    if($(this).hasClass('left')){
+        if((p-1)>=0) 
+            p=p-1;
+        //console.log(p)
+    }else{
+        if((p+1)<=(all-4)) 
+            p=p+1;
+        //console.log(p)
+    }
+    $(".thumb").animate({right:p*80})
+   })
 
 
 </script>
