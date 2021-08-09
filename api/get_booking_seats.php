@@ -77,3 +77,33 @@ $session=$_GET['session'];
 <div>您已經勾選了<span class='tickets'></span>張票，最多可以購買四張票</div>
 <div><button onclick='javascript:$("#menu").toggle();$("#booking").toggle()'>上一步</button><button>訂購</button></div>
 </div>
+
+
+<script>
+let count=0;
+let seats=new Array();
+$(".seat input").on("click",function(){
+    let seat=$(this).val();
+    
+    switch($(this).prop("checked")){
+        case true:
+            if(count>=4){
+                alert("最多只能勾選四張票")
+                $(this).prop("checked",false)
+            }else{
+                count++;
+                seats.push(seat)
+            }
+        break;
+        case false:
+            count--
+            seats.splice(seats.indexOf(seat),1)
+        break;
+    }
+    
+    $(".tickets").text(count)
+
+})
+
+
+</script>
