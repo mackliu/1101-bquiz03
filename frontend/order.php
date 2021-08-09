@@ -1,4 +1,4 @@
-<h2 class="ct">線上訂票</h2>
+<h2 class="ct" style="margin:5px;">線上訂票</h2>
 <style>
 
     table tr:nth-child(odd){
@@ -24,32 +24,38 @@
         border:1px solid #999;
     }
 </style>
-<table>
-    <tr>
-        <td>電影：</td>
-        <td>
-            <select name="movie" id="movie">
-                
-            </select>
-        </td>
-    </tr>
-    <tr>
-        <td>日期：</td>
-        <td>
-            <select name="date" id="date"></select>
-        </td>
-    </tr>
-    <tr>
-        <td>場次：</td>
-        <td>
-            <select name="session" id="session"></select>
-        </td>
-    </tr>
-</table>
-<div class="ct">
-    <button>確定</button>
-    <button>重置</button>
+<div id="menu">
+    <table>
+        <tr>
+            <td>電影：</td>
+            <td>
+                <select name="movie" id="movie">
+                    
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td>日期：</td>
+            <td>
+                <select name="date" id="date"></select>
+            </td>
+        </tr>
+        <tr>
+            <td>場次：</td>
+            <td>
+                <select name="session" id="session"></select>
+            </td>
+        </tr>
+    </table>
+    <div class="ct">
+        <button onclick="goBooking()">確定</button>
+        <button>重置</button>
+    </div>
 </div>
+<div id="booking" style="display:none">
+
+</div>
+
 <script>
 getMovieList()
 
@@ -101,5 +107,18 @@ function getSessionList(){
     })
 }
 
+function goBooking(){
+    $("#menu").toggle()
+    $("#booking").toggle()
+
+    let movie=$("#movie").val()
+    let date=$("#date").val()
+    let session=$("#session").val()
+    $.get("api/get_booking_seats.php",{movie,date,session},(seats)=>{
+        $("#booking").html(seats)
+    })
+
+
+}
 
 </script>
