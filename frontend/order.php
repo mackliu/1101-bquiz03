@@ -52,7 +52,20 @@
 </div>
 <script>
 getMovieList()
-//取得電影列表
+
+
+//當電影選單改變時執行上映日期檢查
+$("#movie").on("change",()=>{
+    getDateList()
+})
+
+//當日期選單改變時執行可訂單場次檢查
+$("#date").on("change",()=>{
+    getSessionList()
+})
+
+
+//取得電影列表-頁面載入時執行一次
 function getMovieList(){
     let id='<?=$_GET['id']??'';?>';
     /* let url=location.href
@@ -63,10 +76,20 @@ function getMovieList(){
     let id=url[1]; */
     $.get("api/get_movie_list.php",{id},(list)=>{
         $("#movie").html(list)
+        getDateList()
     })
     
 }
 
+
+function getDateList(){
+    let movie=$("#movie").val()
+    $.get("api/get_movie_days.php",{movie},(list)=>{
+        //console.log(list)
+        $("#date").html(list)
+        getSessionList()
+    })
+}
 
 
 </script>
