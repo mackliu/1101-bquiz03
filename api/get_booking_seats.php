@@ -70,15 +70,11 @@ foreach($orders as $ord){
 
                 }else{
                     echo "<div class='seat null'>";
-
+                    echo "<input type='checkbox' name='book' value='$i'>";
                 }
                 echo "<span>";
                 echo floor($i/5)+1 . "排". (($i%5)+1) ."號";
                 echo "</span>";
-                if(!in_array($i,$seats)){
-                    echo "<input type='checkbox' name='book' value='$i'>";
-                }                
-                
                 echo "</div>";
             }
         ?>
