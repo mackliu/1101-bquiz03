@@ -117,7 +117,7 @@ function checkout(){
              seats},
              (no)=>{
                  //console.log(no)
-                location.href='?no='+no
+                location.href='?do=checkout&no='+no
              })
 }
 
