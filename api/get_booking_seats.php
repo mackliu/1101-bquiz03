@@ -75,7 +75,10 @@ $session=$_GET['session'];
 <div>您選擇的電影是：<?=$movie['name'];?></div>
 <div>您選擇的時刻是：<?=$date;?> <?=$seStr[$session];?></div>
 <div>您已經勾選了<span class='tickets'></span>張票，最多可以購買四張票</div>
-<div><button onclick='javascript:$("#menu").toggle();$("#booking").toggle()'>上一步</button><button>訂購</button></div>
+<div>
+    <button onclick='javascript:$("#menu").toggle();$("#booking").toggle()'>上一步</button>
+    <button onclick="checkout()">訂購</button>
+</div>
 </div>
 
 
@@ -104,6 +107,20 @@ $(".seat input").on("click",function(){
     $(".tickets").text(count)
 
 })
+
+function checkout(){
+    $.post("api/checkout.php",
+            {'name':'<?=$movie['name'];?>',
+             'date':'<?=$date;?>',
+             'session':'<?=$seStr[$session];?>',
+             'qt':count,
+             seats},
+             (no)=>{
+                 //console.log(no)
+                location.href='?no='+no
+             })
+}
+
 
 
 </script>
