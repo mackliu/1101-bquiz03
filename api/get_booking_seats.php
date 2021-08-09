@@ -4,9 +4,14 @@ $movie=$Movie->find($_GET['movie']);
 $date=$_GET['date'];
 $session=$_GET['session'];
 
+$orders=$Ord->all(['name'=>$movie['name'],'date'=>$date,'session'=>$seStr[$session]]);
+$seats=[];
+foreach($orders as $ord){
+
+    $seats=array_merge($seats,unserialize($ord['seats']));
+}
 
 ?>
-
 <style>
 
 .room{
@@ -60,11 +65,20 @@ $session=$_GET['session'];
         <?php
             for($i=0;$i<20;$i++){
                 
-                echo "<div class='seat null'>";
+                if(in_array($i,$seats)){
+                    echo "<div class='seat booked'>";
+
+                }else{
+                    echo "<div class='seat null'>";
+
+                }
                 echo "<span>";
                 echo floor($i/5)+1 . "排". (($i%5)+1) ."號";
                 echo "</span>";
-                echo "<input type='checkbox' name='book' value='$i'>";
+                if(!in_array($i,$seats)){
+                    echo "<input type='checkbox' name='book' value='$i'>";
+                }                
+                
                 echo "</div>";
             }
         ?>
