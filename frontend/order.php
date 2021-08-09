@@ -91,5 +91,15 @@ function getDateList(){
     })
 }
 
+function getSessionList(){
+    let movie=$("#movie").val()
+    let date=$("#date").val()
+    $.get("api/get_date_session.php",{movie,date},(list)=>{
+        //console.log(list)
+        $("#session").html(list)
+        
+    })
+}
+
 
 </script>
