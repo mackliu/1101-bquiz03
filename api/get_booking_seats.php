@@ -110,11 +110,15 @@ $(".seat input").on("click",function(){
             }else{
                 count++;
                 seats.push(seat)
+                $(this).parent().removeClass("null")
+                $(this).parent().addClass("booked")
             }
         break;
         case false:
             count--
             seats.splice(seats.indexOf(seat),1)
+                $(this).parent().removeClass("booked")
+                $(this).parent().addClass("null")
         break;
     }
     
