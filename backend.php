@@ -38,7 +38,7 @@ if(!empty($_POST)){
   </div>
   <div id="top2"> 
   <a href="index.php">首頁</a> 
-            <a href="order.php">線上訂票</a> 
+            <a href="index.php?do=order">線上訂票</a> 
             <a href="#">會員系統</a> 
             <a href="backend.php">管理系統</a>
   </div>
