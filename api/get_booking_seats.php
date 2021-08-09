@@ -21,19 +21,54 @@ $session=$_GET['session'];
     width:315px;
     height:340px;
     margin:auto;
+    display:flex;
+    flex-wrap:wrap;
 }
 .ord-info{
     padding-left:30%;
+}
+
+.seat {
+    width: 20%;
+    flex-shrink: 0;
+    text-align: center;
+    position: relative;
+}
+
+.seat input {
+    display: block;
+    position: absolute;
+    right: 5px;
+    bottom: 5px;
+}
+
+.null {
+    background: url('icon/03D02.png');
+    background-position: center;
+    background-repeat: no-repeat;
+}
+.booked {
+    background: url('icon/03D03.png');
+    background-position: center;
+    background-repeat: no-repeat;
 }
 </style>
 
 
 <div class="room">
-<div class="seats">
-
-
-
-</div>
+    <div class="seats">
+        <?php
+            for($i=0;$i<20;$i++){
+                
+                echo "<div class='seat null'>";
+                echo "<span>";
+                echo floor($i/5)+1 . "排". (($i%5)+1) ."號";
+                echo "</span>";
+                echo "<input type='checkbox' name='book' value='$i'>";
+                echo "</div>";
+            }
+        ?>
+    </div>
 </div>
 
 <div class='ord-info'>
