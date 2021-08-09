@@ -112,9 +112,15 @@ class DB{
     }
     //欄位最大值
     
-    public function math($math,$col){
+    public function math($math,$col,...$array){
         $sql="select $math(`$col`) from $this->table";
 
+        if(!empty($array)){
+            foreach($array[0] as $key => $value){
+                $tmp[]=sprintf("`%s`='%s'",$key,$value);
+            }
+                $sql=$sql . " where " . implode(" && ",$tmp);
+        }
         return $this->pdo->query($sql)->fetchColumn();
     }
 

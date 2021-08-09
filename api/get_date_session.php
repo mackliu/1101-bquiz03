@@ -17,8 +17,9 @@ if($date!=date("Y-m-d")){
 }
 
 for($i=(6-$s);$i<=5;$i++){
+    $seats=$Ord->math('sum','qt',['name'=>$movie['name'],'date'=>$date,'session'=>$seStr[$i]]);
     echo "<option value='$i'>";
-    echo $seStr[$i] . "剩餘座位 20 ";
+    echo $seStr[$i] . "剩餘座位 ".(20-$seats);
     echo "</option>";
 }
 
